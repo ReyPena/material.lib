@@ -1,2 +1,2 @@
-# matirial.lib
+# material.lib
 A minimalistic CSS library using Material design specifications.
