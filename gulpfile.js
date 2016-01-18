@@ -28,4 +28,4 @@ gulp.task("watch", function () {
   gulp.watch(paths.components, ["cssLib", "cssLibMin"]);
 });
 
-gulp.task("default", []);
+gulp.task("default", ["watch", "cssLib", "cssLibMin"]);
