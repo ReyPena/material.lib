@@ -3,6 +3,7 @@ var gulp = require("gulp")
   , uglify =  require("gulp-uglify")
   , uglifyCss = require("gulp-uglifycss")
   , sass = require("gulp-sass")
+  , path = require("path")
   , watch = require("gulp-watch");
 
 var paths = {
@@ -11,21 +12,23 @@ var paths = {
 };
 
 gulp.task("cssLib", function () {
-  gulp.src(path.scss)
-    .pipe(sass())
-    .pipe(concat("./dis/Csslib.css"));
+  gulp.src(paths.scss)
+    .pipe(sass({paths: [path.join(__dirname, "styles")]}))
+    .pipe(concat("Csslib.css"))
+    .pipe(gulp.dest("./dist"));
 });
 
 gulp.task("cssLibMin", function () {
-  gulp.src(path.scss)
-    .pipe(sass())
-    .pipe(uglifyCss())
-    .pipe(concat("./dis/miniCsslib.css"));
+  gulp.src(paths.scss)
+    .pipe(sass({paths: [path.join(__dirname, "styles")]}))
+    // .pipe(uglifyCss())
+    .pipe(concat("miniCsslib.css"))
+    .pipe(gulp.dest("./dist"));
 });
 
 gulp.task("watch", function () {
   gulp.watch(paths.scss, ["cssLib", "cssLibMin"]);
-  gulp.watch(paths.components, ["cssLib", "cssLibMin"]);
+  // gulp.watch(paths.components, ["cssLib", "cssLibMin"]);
 });
 
 gulp.task("default", ["watch", "cssLib", "cssLibMin"]);
