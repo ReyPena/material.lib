@@ -1,3 +1,31 @@
+$max_levels: 4;
+
+$base-colors: ( "red": #FF0000, "green": #00FF00, "blue": #0000FF );
+
+@each $color,
+$color_value in $base-colors {
+  .#{$color} {
+    background-color: $color_value;
+  }
+}
+
+@each $color,
+$color_value in $base-colors {
+
+  @for $i from 1 through ($max_levels) {
+    .#{$color + ".lighten-" + $i} {
+      background-color: lighten($color_value, percentage($i/(($max_levels + 1) * 2)));
+    }
+    .#{$color + ".darken-" + $i} {
+      background-color: darken($color_value, percentage($i/(($max_levels + 1) * 2)));
+    }
+  }
+
+  $compliment_hue: hue($color_value) + 180deg;
+  .#{$color + ".compliment"} { background-color: hsl($compliment_hue, saturation($color_value), lightness($color_value)) }
+}
+
+/*
 $red: (
   "base":       #F44336,
   "lighten-5":  #FFEBEE,
@@ -9,12 +37,11 @@ $red: (
   "darken-2":   #D32F2F,
   "darken-3":   #C62828,
   "darken-4":   #B71C1C,
-  "accent-1":    #FF8A80,
-  "accent-2":    #FF5252,
-  "accent-3":    #FF1744,
-  "accent-4":    #D50000
+  "accent-1":   #FF8A80,
+  "accent-2":   #FF5252,
+  "accent-3":   #FF1744,
+  "accent-4":   #D50000
 );
-
 $pink: (
   "base":       #e91e63,
   "lighten-5":  #fce4ec,
@@ -26,12 +53,11 @@ $pink: (
   "darken-2":   #c2185b,
   "darken-3":   #ad1457,
   "darken-4":   #880e4f,
-  "accent-1":    #ff80ab,
-  "accent-2":    #ff4081,
-  "accent-3":    #f50057,
-  "accent-4":    #c51162
+  "accent-1":   #ff80ab,
+  "accent-2":   #ff4081,
+  "accent-3":   #f50057,
+  "accent-4":   #c51162
 );
-
 $purple: (
   "base":       #9c27b0,
   "lighten-5":  #f3e5f5,
@@ -48,7 +74,6 @@ $purple: (
   "accent-3":    #d500f9,
   "accent-4":    #aa00ff
 );
-
 $deep-purple: (
   "base":       #673ab7,
   "lighten-5":  #ede7f6,
@@ -65,7 +90,6 @@ $deep-purple: (
   "accent-3":    #651fff,
   "accent-4":    #6200ea
 );
-
 $indigo: (
   "base":       #3f51b5,
   "lighten-5":  #e8eaf6,
@@ -82,7 +106,6 @@ $indigo: (
   "accent-3":    #3d5afe,
   "accent-4":    #304ffe
 );
-
 $blue: (
   "base":       #2196F3,
   "lighten-5":  #E3F2FD,
@@ -99,7 +122,6 @@ $blue: (
   "accent-3":    #2979FF,
   "accent-4":    #2962FF
 );
-
 $light-blue: (
   "base":       #03a9f4,
   "lighten-5":  #e1f5fe,
@@ -116,7 +138,6 @@ $light-blue: (
   "accent-3":    #00b0ff,
   "accent-4":    #0091ea
 );
-
 $cyan: (
   "base":       #00bcd4,
   "lighten-5":  #e0f7fa,
@@ -133,7 +154,6 @@ $cyan: (
   "accent-3":    #00e5ff,
   "accent-4":    #00b8d4
 );
-
 $teal: (
   "base":       #009688,
   "lighten-5":  #e0f2f1,
@@ -150,7 +170,6 @@ $teal: (
   "accent-3":    #1de9b6,
   "accent-4":    #00bfa5
 );
-
 $green: (
   "base":       #4CAF50,
   "lighten-5":  #E8F5E9,
@@ -167,7 +186,6 @@ $green: (
   "accent-3":    #00E676,
   "accent-4":    #00C853
 );
-
 $light-green: (
   "base":       #8bc34a,
   "lighten-5":  #f1f8e9,
@@ -184,7 +202,6 @@ $light-green: (
   "accent-3":    #76ff03,
   "accent-4":    #64dd17
 );
-
 $lime: (
   "base":       #cddc39,
   "lighten-5":  #f9fbe7,
@@ -201,7 +218,6 @@ $lime: (
   "accent-3":    #c6ff00,
   "accent-4":    #aeea00
 );
-
 $yellow: (
   "base":       #ffeb3b,
   "lighten-5":  #fffde7,
@@ -218,7 +234,6 @@ $yellow: (
   "accent-3":    #ffea00,
   "accent-4":    #ffd600
 );
-
 $amber: (
   "base":       #ffc107,
   "lighten-5":  #fff8e1,
@@ -235,7 +250,6 @@ $amber: (
   "accent-3":    #ffc400,
   "accent-4":    #ffab00
 );
-
 $orange: (
   "base":       #ff9800,
   "lighten-5":  #fff3e0,
@@ -252,7 +266,6 @@ $orange: (
   "accent-3":    #ff9100,
   "accent-4":    #ff6d00
 );
-
 $deep-orange: (
   "base":       #ff5722,
   "lighten-5":  #fbe9e7,
@@ -269,7 +282,6 @@ $deep-orange: (
   "accent-3":    #ff3d00,
   "accent-4":    #dd2c00
 );
-
 $brown: (
   "base":       #795548,
   "lighten-5":  #efebe9,
@@ -282,7 +294,6 @@ $brown: (
   "darken-3":   #4e342e,
   "darken-4":   #3e2723
 );
-
 $blue-grey: (
   "base":       #607d8b,
   "lighten-5":  #eceff1,
@@ -295,7 +306,6 @@ $blue-grey: (
   "darken-3":   #37474f,
   "darken-4":   #263238
 );
-
 $grey: (
   "base":       #9e9e9e,
   "lighten-5":  #fafafa,
@@ -308,32 +318,53 @@ $grey: (
   "darken-3":   #424242,
   "darken-4":   #212121
 );
-
 $shades: (
   "black":        #000000,
   "white":        #FFFFFF,
   "transparent":  transparent
 );
-
-// $colors: (
-//   "red": $red,
-//   "pink": $pink,
-//   "purple": $purple,
-//   "deep-purple": $deep-purple,
-//   "indigo": $indigo,
-//   "blue": $blue,
-//   "light-blue": $light-blue,
-//   "cyan": $cyan,
-//   "teal": $teal,
-//   "green": $green,
-//   "light-green": $light-green,
-//   "lime": $lime,
-//   "yellow": $yellow,
-//   "amber": $amber,
-//   "orange": $orange,
-//   "deep-orange": $deep-orange,
-//   "brown": $brown,
-//   "blue-grey": $blue-grey,
-//   "grey": $grey,
-//   "shades": $shades
-// );
+$colors: (
+  "red": $red,
+  "pink": $pink,
+  "purple": $purple,
+  "deep-purple": $deep-purple,
+  "indigo": $indigo,
+  "blue": $blue,
+  "light-blue": $light-blue,
+  "cyan": $cyan,
+  "teal": $teal,
+  "green": $green,
+  "light-green": $light-green,
+  "lime": $lime,
+  "yellow": $yellow,
+  "amber": $amber,
+  "orange": $orange,
+  "deep-orange": $deep-orange,
+  "brown": $brown,
+  "blue-grey": $blue-grey,
+  "grey": $grey,
+  "shades": $shades
+);
+$colors: (
+  "red": $red,
+  "pink": $pink,
+  "purple": $purple,
+  "deep-purple": $deep-purple,
+  "indigo": $indigo,
+  "blue": $blue,
+  "light-blue": $light-blue,
+  "cyan": $cyan,
+  "teal": $teal,
+  "green": $green,
+  "light-green": $light-green,
+  "lime": $lime,
+  "yellow": $yellow,
+  "amber": $amber,
+  "orange": $orange,
+  "deep-orange": $deep-orange,
+  "brown": $brown,
+  "blue-grey": $blue-grey,
+  "grey": $grey,
+  "shades": $shades
+);
+*/
