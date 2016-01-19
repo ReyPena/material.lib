@@ -1,3 +1,38 @@
+$max_levels: 4;
+
+$base-colors: (
+"red": #FF0000,
+"green": #00FF00,
+"blue": #0000FF
+);
+
+@each $color,
+$color_value in $base-colors {
+  .#{$color} {
+    background-color: $color_value;
+  }
+}
+
+@for $i from 1 through ($max_levels) {
+  @each $color,
+  $color_value in $base-colors {
+    .#{$color + "-lighten-" + $i} {
+      background-color: lighten($color_value, percentage($i/($max_levels * 2)));
+    }
+  }
+}
+
+@for $i from 1 through ($max_levels) {
+  @each $color,
+  $color_value in $base-colors {
+    .#{$color + "-darken-" + $i} {
+      background-color: darken($color_value, percentage($i/($max_levels * 2)));
+    }
+  }
+}
+
+/*
+
 $red: (
   "base":       #F44336,
   "lighten-5":  #FFEBEE,
@@ -315,25 +350,50 @@ $shades: (
   "transparent":  transparent
 );
 
-// $colors: (
-//   "red": $red,
-//   "pink": $pink,
-//   "purple": $purple,
-//   "deep-purple": $deep-purple,
-//   "indigo": $indigo,
-//   "blue": $blue,
-//   "light-blue": $light-blue,
-//   "cyan": $cyan,
-//   "teal": $teal,
-//   "green": $green,
-//   "light-green": $light-green,
-//   "lime": $lime,
-//   "yellow": $yellow,
-//   "amber": $amber,
-//   "orange": $orange,
-//   "deep-orange": $deep-orange,
-//   "brown": $brown,
-//   "blue-grey": $blue-grey,
-//   "grey": $grey,
-//   "shades": $shades
-// );
+$colors: (
+  "red": $red,
+  "pink": $pink,
+  "purple": $purple,
+  "deep-purple": $deep-purple,
+  "indigo": $indigo,
+  "blue": $blue,
+  "light-blue": $light-blue,
+  "cyan": $cyan,
+  "teal": $teal,
+  "green": $green,
+  "light-green": $light-green,
+  "lime": $lime,
+  "yellow": $yellow,
+  "amber": $amber,
+  "orange": $orange,
+  "deep-orange": $deep-orange,
+  "brown": $brown,
+  "blue-grey": $blue-grey,
+  "grey": $grey,
+  "shades": $shades
+);
+
+$colors: (
+  "red": $red,
+  "pink": $pink,
+  "purple": $purple,
+  "deep-purple": $deep-purple,
+  "indigo": $indigo,
+  "blue": $blue,
+  "light-blue": $light-blue,
+  "cyan": $cyan,
+  "teal": $teal,
+  "green": $green,
+  "light-green": $light-green,
+  "lime": $lime,
+  "yellow": $yellow,
+  "amber": $amber,
+  "orange": $orange,
+  "deep-orange": $deep-orange,
+  "brown": $brown,
+  "blue-grey": $blue-grey,
+  "grey": $grey,
+  "shades": $shades
+);
+
+*/
