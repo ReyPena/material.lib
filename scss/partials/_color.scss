@@ -16,7 +16,7 @@ $color_value in $base-colors {
 @for $i from 1 through ($max_levels) {
   @each $color,
   $color_value in $base-colors {
-    .#{$color + "-lighten-" + $i} {
+    .#{$color + ".lighten-" + $i} {
       background-color: lighten($color_value, percentage($i/(($max_levels + 1) * 2)));
     }
   }
@@ -25,7 +25,7 @@ $color_value in $base-colors {
 @for $i from 1 through ($max_levels) {
   @each $color,
   $color_value in $base-colors {
-    .#{$color + "-darken-" + $i} {
+    .#{$color + ".darken-" + $i} {
       background-color: darken($color_value, percentage($i/(($max_levels + 1) * 2)));
     }
   }
