@@ -1,9 +1,6 @@
 $max_levels: 4;
 
-$base-colors: (
- "red": #FF0000,
- "green": #00FF00,
- "blue": #0000FF );
+$base-colors: ( "red": #FF0000, "green": #00FF00, "blue": #0000FF );
 
 @each $color,
 $color_value in $base-colors {
@@ -12,9 +9,10 @@ $color_value in $base-colors {
   }
 }
 
-@for $i from 1 through ($max_levels) {
-  @each $color,
-  $color_value in $base-colors {
+@each $color,
+$color_value in $base-colors {
+  
+  @for $i from 1 through ($max_levels) {
     .#{$color + ".lighten-" + $i} {
       background-color: lighten($color_value, percentage($i/(($max_levels + 1) * 2)));
     }
@@ -22,6 +20,9 @@ $color_value in $base-colors {
       background-color: darken($color_value, percentage($i/(($max_levels + 1) * 2)));
     }
   }
+
+  $compliment_hue: hue($color_value) + 180deg;
+  .#{$color + ".compliment"} { background-color: hsl($compliment_hue, saturation($color_value), lightness($color_value)) }
 }
 
 /*
