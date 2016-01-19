@@ -11,7 +11,11 @@ $color_value in $base-colors {
 
 @each $color,
 $color_value in $base-colors {
+<<<<<<< HEAD:scss/partials/_color.scss
 
+=======
+  
+>>>>>>> c4ec9ec4a0ca623254fd517370e70b84161b332c:scss/partials/_color.scss
   @for $i from 1 through ($max_levels) {
     .#{$color + ".lighten-" + $i} {
       background-color: lighten($color_value, percentage($i/(($max_levels + 1) * 2)));
@@ -26,6 +30,10 @@ $color_value in $base-colors {
 }
 
 /*
+<<<<<<< HEAD:scss/partials/_color.scss
+=======
+
+>>>>>>> c4ec9ec4a0ca623254fd517370e70b84161b332c:scss/partials/_color.scss
 $red: (
   "base":       #F44336,
   "lighten-5":  #FFEBEE,
@@ -323,6 +331,10 @@ $shades: (
   "white":        #FFFFFF,
   "transparent":  transparent
 );
+<<<<<<< HEAD:scss/partials/_color.scss
+=======
+
+>>>>>>> c4ec9ec4a0ca623254fd517370e70b84161b332c:scss/partials/_color.scss
 $colors: (
   "red": $red,
   "pink": $pink,
@@ -345,6 +357,10 @@ $colors: (
   "grey": $grey,
   "shades": $shades
 );
+<<<<<<< HEAD:scss/partials/_color.scss
+=======
+
+>>>>>>> c4ec9ec4a0ca623254fd517370e70b84161b332c:scss/partials/_color.scss
 $colors: (
   "red": $red,
   "pink": $pink,
@@ -367,4 +383,8 @@ $colors: (
   "grey": $grey,
   "shades": $shades
 );
+<<<<<<< HEAD:scss/partials/_color.scss
+=======
+
+>>>>>>> c4ec9ec4a0ca623254fd517370e70b84161b332c:scss/partials/_color.scss
 */
