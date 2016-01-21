@@ -1,9 +1,14 @@
 $max_levels: 4;
 
 $base-colors: (
-  "red": #FF0000,
-  "green": #00FF00,
-  "blue": #0000FF );
+  "red": #EE1F28,
+  "green": #3BB54A,
+  "blue": #2195D3,
+  "orange": #F89723,
+  "yellow": #FCDF12,
+  "coffee": #8B5F3C,
+  "black": #000000
+);
 
 @each $color,
 $color_value in $base-colors {
