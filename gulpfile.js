@@ -6,7 +6,7 @@ var gulp = require("gulp")
   , watch = require("gulp-watch");
 
 var paths = {
-  scss: "./scss/*.scss",
+  scss: "./scss/**/*.scss",
   dist: "./dist"
 };
 
@@ -27,7 +27,7 @@ gulp.task("css-minified", function () {
 
 gulp.task("watch", function () {
   gulp.watch(paths.scss, ["css", "css-minified"]);
-  gulp.watch(paths.components, ["css", "css-minified"]);
+  // gulp.watch(paths.components, ["css", "css-minified"]);
 });
 
-gulp.task("default", ["css", "css-minified"]);
+gulp.task("default", ["css", "css-minified", "watch"]);
