@@ -7,6 +7,7 @@ var gulp = require("gulp")
 
 var paths = {
   scss: "./scss/**/*.scss",
+  fonty: "./scss/fonts/**",
   dist: "./dist"
 };
 
@@ -25,9 +26,13 @@ gulp.task("css-minified", function () {
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task("watch", function () {
-  gulp.watch(paths.scss, ["css", "css-minified"]);
-  // gulp.watch(paths.components, ["css", "css-minified"]);
+gulp.task("fontCopy", function () {
+  gulp.src(paths.fonty)
+    .pipe(gulp.dest("./dist/fonts"));
 });
 
-gulp.task("default", ["css", "css-minified", "watch"]);
+gulp.task("watch", function () {
+  gulp.watch(paths.scss, ["css", "css-minified"]);
+});
+
+gulp.task("default", ["css", "css-minified", "watch", "fontCopy"]);
